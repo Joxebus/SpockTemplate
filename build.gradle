@@ -14,4 +14,19 @@ repositories {
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.13'
     testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+    testCompile 'org.spockframework:spock-spring:1.1-groovy-2.4'
+
+    testRuntime 'cglib:cglib-nodep:3.2.4'       // For mocking classes
+    testCompile 'org.objenesis:objenesis:1.2'   // For mocking final classes
+
+    // Json External API
+    compile "org.glassfish:javax.json:1.1.2"
+
+    // Spring Dependencies
+    compile "org.springframework.boot:spring-boot-starter-web:1.5.7.RELEASE"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:1.5.7.RELEASE"
+    testCompile "org.springframework.boot:spring-boot-starter-test:1.5.7.RELEASE"
+
+    // DataBase
+    compile "com.h2database:h2:1.4.197"
 }

@@ -1,0 +1,131 @@
+{
+	"id": "bfae348a-b05e-43d5-aae1-e0690e307ac2",
+	"name": "SpockWorkshopChallenge",
+	"description": null,
+	"auth": null,
+	"events": null,
+	"variables": null,
+	"order": [
+		"b02e9a12-e183-43de-ac41-f64a72ec1e23",
+		"bb7573df-5966-43d3-8f2f-d7863e73e85d",
+		"32fa49f9-3dfc-4d0f-a5e4-bd44722b0dc7",
+		"a72d2f0a-3ae5-4a06-81c2-f15e141f7bf8",
+		"0afa5149-9ef6-4e6c-b277-326079b04a00"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "0afa5149-9ef6-4e6c-b277-326079b04a00",
+			"name": "People Delete",
+			"url": "http://localhost:8080/people/3",
+			"description": "Spock Workshop Examples",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "32fa49f9-3dfc-4d0f-a5e4-bd44722b0dc7",
+			"name": "People Get by id",
+			"url": "http://localhost:8080/people/2",
+			"description": "Spock Workshop Examples",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "a72d2f0a-3ae5-4a06-81c2-f15e141f7bf8",
+			"name": "People Update",
+			"url": "http://localhost:8080/people/",
+			"description": "Spock Workshop Examples",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n    \"id\": 2,\n    \"name\": \"Angelica\",\n    \"lastName\": \"Hernandez\",\n    \"age\": 29\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "b02e9a12-e183-43de-ac41-f64a72ec1e23",
+			"name": "People Post",
+			"url": "http://localhost:8080/people/",
+			"description": "Spock Workshop Examples",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "cb65dafc-31e9-4691-8baf-b5f035fe6cf3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"folder": null,
+			"rawModeData": "{\n\"name\" : \"Diego\",\n\"lastName\": \"Ventura\",\n\"age\" : 30,\n\"phone\" : \"442-123-2345\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "bb7573df-5966-43d3-8f2f-d7863e73e85d",
+			"name": "People List",
+			"url": "http://localhost:8080/people/",
+			"description": "Spock Workshop Examples",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		}
+	]
+}

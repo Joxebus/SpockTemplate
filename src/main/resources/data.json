@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Jorge",
+    "lastName": "Valenzuela",
+    "age": 24,
+    "phone": "662-862-1248"
+  },
+  {
+    "name": "Diana",
+    "lastName": "Hernandez",
+    "age": 35,
+    "phone": "551-762-1237"
+  },
+  {
+    "name": "Manuel",
+    "lastName": "Sanchez",
+    "age": 46,
+    "phone": "661-213-8642"
+  },
+  {
+    "name": "Omar",
+    "lastName": "Bautista",
+    "age": 30,
+    "phone": "442-676-9872"
+  },
+  {
+    "name": "Eduardo",
+    "lastName": "Salazar",
+    "age": 32,
+    "phone": "415-864-1238"
+  }
+]
