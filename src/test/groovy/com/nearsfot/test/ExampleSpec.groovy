@@ -1,20 +1,79 @@
 package com.nearsfot.test
 
+import com.nearsoft.beans.Person
+import com.nearsoft.controller.PersonController
+import com.nearsoft.service.PersonService
+import spock.lang.Shared
 import spock.lang.Specification
+import spock.lang.Unroll
 
-class ExampleSpec extends Specification{
+class ExampleSpec extends Specification {
 
-    def "Sum 2 numbers"(){
-        given: "Two numbers 4 and 7"
-        int a = 4
-        int b = 7
+    @Shared
+    private PersonService personService
+    @Shared
+    private PersonController personController
 
-        when:"Plus operation"
+    def "Stub objects provide a valid response"(){
+        setup: "the person service stub"
+        personService = Stub()
+        personController = new PersonController(
+                personService: personService
+        )
 
-        int c = a+b
+        and: "setup the valid response"
+        personService.create(_,_) >> new Person(name: name, age: age)
 
-        then:"The result must be 11"
+        when:"call the service"
+        Person person = personController.create("something","something")
 
-        c == 11
+        then:"validate the interaction with the service"
+
+        person.with {
+            it.name == name
+            it.age == age
+            !phone
+        }
+
+        where: "Information provided as data table"
+        name    |   age
+        "Sofia" |   28
+        "Oscar" |   31
+        "Omar"  |   30
+
+    }
+
+    def "Mock objects validate that certain methods are called"(){
+        setup:
+        personService = Mock()
+        personController = new PersonController(
+                personService: personService
+        )
+
+        when:
+        personController.create("Omar","423-132-2341")
+
+        then: "validate the interaction with the service"
+
+        1 * personService.create("Omar", "423-132-2341")
+
+    }
+
+    @Unroll("Testing exception is thrown with phone #phone")
+    def "Test exception with different data"(){
+        given:
+        personService = new PersonService()
+        personController = new PersonController(personService: personService)
+
+        when:
+        Person person = personController.create(name, phone)
+
+        then:
+        thrown RuntimeException
+
+        where: "Information provided as data pipes"
+        name  << ["Sofia", "Oscar", "Omar"]
+        phone << ["123-1234-12", "124-762341","987-234-124"]
+
     }
 }
