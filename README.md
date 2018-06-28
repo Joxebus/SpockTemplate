@@ -14,6 +14,31 @@ and finally
 
 - Use default gradle wrapper
 
+## Structure of the project
+
+```
+root
+├── README.md
+├── build.gradle
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── gradlew
+├── gradlew.bat
+├── settings.gradle
+├── src
+│   └── main
+│       ├── groovy
+│       ├── java
+│       └── resources
+└── src
+    └── test
+        ├── groovy
+        ├── java
+        └── resources
+```
+
 ## Requirements
 
 - Java 8
