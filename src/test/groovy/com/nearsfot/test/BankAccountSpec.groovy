@@ -46,7 +46,7 @@ class BankAccountSpec extends Specification {
 
         when: "When the service receive the account and 100"
 
-        then: "The balance should be 100"
+        then: "The service should call getAmount on account"
 
     }
 
