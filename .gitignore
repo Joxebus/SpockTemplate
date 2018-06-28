@@ -1,0 +1,10 @@
+# Compiled classes
+build/*
+.gradle
+.class
+.jar
+
+# Configuration classes
+.idea/
+.iml/
+
