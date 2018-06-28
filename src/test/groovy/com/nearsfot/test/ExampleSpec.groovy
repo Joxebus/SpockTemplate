@@ -4,17 +4,16 @@ import spock.lang.Specification
 
 class ExampleSpec extends Specification{
 
-    def "Sum 2 numbers"(){
-        given: "Two numbers 4 and 7"
-        int a = 4
-        int b = 7
+    def "When an element is added to a list the size must change"(){
+        given: "a list of 4 numbers"
+        List numbers = [2, 3, 5, 7]
 
-        when:"Plus operation"
+        when:"add a new element"
+        numbers.add(11)
 
-        int c = a+b
+        then:"the new size must be 5 and the old size should be 4"
+        numbers.size() == 5
+        old(numbers.size()) == 4
 
-        then:"The result must be 11"
-
-        c == 11
     }
 }
