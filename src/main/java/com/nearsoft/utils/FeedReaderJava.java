@@ -1,6 +1,5 @@
 package com.nearsoft.utils;
 
-import com.nearsoft.beans.Blog;
 import com.nearsoft.beans.Book;
 import com.nearsoft.beans.Feed;
 import com.nearsoft.beans.FeedEntry;
@@ -30,21 +29,14 @@ public class FeedReaderJava {
     private static final String PUB_DATE = "pubDate";
 
     private FeedService<Book> bookFeedService;
-    private FeedService<Blog> blogFeedService;
 
-    public FeedReaderJava(FeedService<Book> bookFeedService, FeedService<Blog> blogFeedService) {
+    public FeedReaderJava(FeedService<Book> bookFeedService) {
         this.bookFeedService = bookFeedService;
-        this.blogFeedService = blogFeedService;
     }
 
     public List<Book> readBookFeed(String feedUrl){
         List<FeedEntry> entries = readFeed(feedUrl).getEntries();
         return bookFeedService.extractFromFeed(entries);
-    }
-
-    public List<Blog> readBlogFeed(String feedUrl){
-        List<FeedEntry> entries = readFeed(feedUrl).getEntries();
-        return blogFeedService.extractFromFeed(entries);
     }
 
     static Feed readFeed(String feedUrl) {
@@ -137,8 +129,6 @@ public class FeedReaderJava {
             throw new RuntimeException(e);
         }
     }
-
-
 
 
 }
