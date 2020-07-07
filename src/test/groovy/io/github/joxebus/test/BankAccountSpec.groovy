@@ -1,4 +1,4 @@
-package com.nearsfot.test
+package io.github.joxebus.test
 
 import com.nearsoft.beans.BankAccount
 import com.nearsoft.services.BankAccountService
