@@ -1,7 +1,7 @@
-package com.nearsoft.services
+package io.github.joxebus.services
 
-import com.nearsoft.beans.BankAccount
-import com.nearsoft.exceptions.BankAccountException
+import io.github.joxebus.beans.BankAccount
+import io.github.joxebus.exceptions.BankAccountException
 
 class BankAccountService {
 

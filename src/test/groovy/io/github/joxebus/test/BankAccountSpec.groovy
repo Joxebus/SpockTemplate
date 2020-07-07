@@ -1,8 +1,7 @@
-package com.nearsfot.test
+package io.github.joxebus.test
 
-import com.nearsoft.beans.BankAccount
-import com.nearsoft.exceptions.BankAccountException
-import com.nearsoft.services.BankAccountService
+import io.github.joxebus.beans.BankAccount
+import io.github.joxebus.services.BankAccountService
 import spock.lang.Specification
 
 class BankAccountSpec extends Specification {
