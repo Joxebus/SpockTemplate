@@ -1,4 +1,4 @@
-package com.nearsoft.exceptions
+package io.github.joxebus.exceptions
 
 class BankAccountException extends RuntimeException {
 
