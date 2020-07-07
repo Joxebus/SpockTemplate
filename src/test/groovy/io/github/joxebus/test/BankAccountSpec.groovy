@@ -12,7 +12,7 @@ class BankAccountSpec extends Specification {
         BankAccountService service = new BankAccountService()
 
         when: "When the service receive the account and 100"
-        service.deposit(bankAccount, 100)
+        service.deposit(bankAccount, 100 as BigDecimal)
 
         then: "The balance should be 100"
         service.balance(bankAccount) == 100
@@ -25,7 +25,7 @@ class BankAccountSpec extends Specification {
         BankAccountService service = new BankAccountService()
 
         when: "When the service withdraw from the account 50"
-        service.withdraw(bankAccount, 50)
+        service.withdraw(bankAccount, 50 as BigDecimal)
 
         then: "The balance should be 50"
         service.balance(bankAccount) == 50
