@@ -1,8 +1,8 @@
-package com.nearsfot.test
+package io.github.joxebus.test
 
-import com.nearsoft.beans.Person
-import com.nearsoft.controller.PersonController
-import com.nearsoft.service.PersonService
+import io.github.joxebus.beans.Person
+import io.github.joxebus.controller.PersonController
+import io.github.joxebus.service.PersonService
 import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll

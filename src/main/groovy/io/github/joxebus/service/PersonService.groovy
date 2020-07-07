@@ -1,6 +1,6 @@
-package com.nearsoft.service
+package io.github.joxebus.service
 
-import com.nearsoft.beans.Person
+import io.github.joxebus.beans.Person
 
 class PersonService {
 

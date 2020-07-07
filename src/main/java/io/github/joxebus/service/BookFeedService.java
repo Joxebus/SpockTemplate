@@ -1,7 +1,7 @@
-package com.nearsoft.service;
+package io.github.joxebus.service;
 
-import com.nearsoft.beans.Book;
-import com.nearsoft.beans.FeedEntry;
+import io.github.joxebus.beans.Book;
+import io.github.joxebus.beans.FeedEntry;
 
 import java.text.DateFormat;
 import java.text.ParseException;

@@ -1,4 +1,4 @@
-package com.nearsoft.beans;
+package io.github.joxebus.beans;
 
 import java.util.Date;
 

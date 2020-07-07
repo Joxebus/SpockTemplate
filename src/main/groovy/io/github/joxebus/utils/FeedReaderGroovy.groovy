@@ -1,9 +1,9 @@
-package com.nearsoft.utils
+package io.github.joxebus.utils
 
 
-import com.nearsoft.beans.Book
-import com.nearsoft.beans.Feed
-import com.nearsoft.service.FeedService
+import io.github.joxebus.beans.Book
+import io.github.joxebus.service.FeedService
+import io.github.joxebus.beans.Feed
 
 class FeedReaderGroovy {
 

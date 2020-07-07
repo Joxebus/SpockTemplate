@@ -1,6 +1,6 @@
-package com.nearsoft.service;
+package io.github.joxebus.service;
 
-import com.nearsoft.beans.FeedEntry;
+import io.github.joxebus.beans.FeedEntry;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
-package com.nearsfot.test
+package io.github.joxebus.test
 
-import com.nearsoft.beans.Book
+import io.github.joxebus.beans.Book
 
-import com.nearsoft.service.FeedService
+import io.github.joxebus.service.FeedService
 import spock.lang.Shared
 import spock.lang.Specification
 

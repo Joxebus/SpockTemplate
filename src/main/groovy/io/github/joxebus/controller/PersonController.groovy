@@ -1,7 +1,7 @@
-package com.nearsoft.controller
+package io.github.joxebus.controller
 
-import com.nearsoft.beans.Person
-import com.nearsoft.service.PersonService
+import io.github.joxebus.beans.Person
+import io.github.joxebus.service.PersonService
 
 class PersonController {
 
