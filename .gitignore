@@ -3,6 +3,7 @@ build/*
 .gradle
 .class
 .jar
+out/*
 
 # Configuration classes
 .idea/
