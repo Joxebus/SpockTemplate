@@ -1,14 +1,14 @@
 package io.github.joxebus.service;
 
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
 import io.github.joxebus.entity.Person;
 import io.github.joxebus.repository.PersonRepository;
 import io.github.joxebus.utils.PersonValidator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class PersonService {
@@ -29,7 +29,7 @@ public class PersonService {
     }
 
     public List<Person> findAll() {
-        return personRepository.list();
+        return personRepository.findAll();
     }
 
     public Person update(Person newPerson) {
@@ -37,30 +37,29 @@ public class PersonService {
         if(newPerson.getId() < 1){
             throw new IllegalArgumentException("Can't update person with id ="+newPerson.getId());
         }
-        Person person = personRepository.findById(newPerson.getId());
+        Person person;
+        person = personRepository.findById(newPerson.getId())
+                .orElseThrow(() -> new IllegalArgumentException("The person can't be updated."));
+
         person.setName(newPerson.getName());
         person.setLastName(newPerson.getLastName());
         person.setAge(newPerson.getAge());
         person.setPhone(newPerson.getPhone());
-        person = personRepository.update(person);
+        person = personRepository.save(person);
         logger.debug("Person updated: {}", person);
         return person;
     }
 
-    public void delete(int id) {
-        Person person = personRepository.findById(id);
-        if(person == null || person.getId() < 1){
-            throw new IllegalArgumentException("Can't delete person with id ="+id);
-        }
+    public void delete(Long id) {
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Can't delete person with id ="+id));
         logger.debug("Deleting person: {}", person);
         personRepository.delete(person);
     }
 
-    public Person findById(int id) {
-        Person person = personRepository.findById(id);
-        if(person == null){
-            throw new IllegalArgumentException("There is no person with id ="+id);
-        }
+    public Person findById(Long id) {
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("There is no person with id ="+id));
         logger.debug("Person found: {}", person);
         return person;
     }

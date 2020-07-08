@@ -50,13 +50,13 @@ public class PersonController {
     }
 
     @GetMapping(value = "/{id}")
-    public Person getById(@PathVariable(name = "id") int id){
+    public Person getById(@PathVariable(name = "id") Long id){
         return personService.findById(id);
     }
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable(name = "id") int id){
+    public void delete(@PathVariable(name = "id") Long id){
         personService.delete(id);
     }
 

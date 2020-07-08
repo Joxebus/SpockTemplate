@@ -1,5 +1,7 @@
 package io.github.joxebus.entity;
 
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,18 +11,18 @@ import javax.persistence.Id;
 public class Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String lastName;
     private int age;
     private String phone;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -58,19 +60,15 @@ public class Person {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-
-        return id == person.id;
+        return Objects.equals(id, person.id);
     }
 
     @Override
     public int hashCode() {
-        return id;
+        return Objects.hash(id);
     }
 
     @Override
