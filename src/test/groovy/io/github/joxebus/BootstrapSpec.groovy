@@ -1,7 +1,8 @@
-package com.nearsoft
+package io.github.joxebus
 
-import com.nearsoft.config.Bootstrap
-import com.nearsoft.service.PersonService
+
+import io.github.joxebus.service.PersonService
+import io.github.joxebus.config.Bootstrap
 import spock.lang.Specification
 
 class BootstrapSpec extends Specification {

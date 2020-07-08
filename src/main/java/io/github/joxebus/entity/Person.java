@@ -1,4 +1,4 @@
-package com.nearsoft.entity;
+package io.github.joxebus.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

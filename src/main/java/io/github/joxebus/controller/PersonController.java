@@ -1,7 +1,7 @@
-package com.nearsoft.controller;
+package io.github.joxebus.controller;
 
-import com.nearsoft.entity.Person;
-import com.nearsoft.service.PersonService;
+import io.github.joxebus.entity.Person;
+import io.github.joxebus.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,20 +27,21 @@ public class PersonController {
 
     private static final Logger logger = LoggerFactory.getLogger(PersonController.class);
 
-    @Autowired
-    private PersonService personService;
+    private final PersonService personService;
+
+    public PersonController(PersonService personService) {
+        this.personService = personService;
+    }
 
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public Person create(@RequestBody Person newPerson){
-        Person person = personService.create(newPerson);
-        return person;
+        return personService.create(newPerson);
     }
 
     @PutMapping("/")
     public Person update(@RequestBody Person newPerson){
-        Person person = personService.update(newPerson);
-        return person;
+        return personService.update(newPerson);
     }
 
     @GetMapping(value = "/")

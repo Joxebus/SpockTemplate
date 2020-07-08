@@ -1,6 +1,6 @@
-package com.nearsoft
+package io.github.joxebus
 
-import com.nearsoft.entity.Person
+import io.github.joxebus.entity.Person
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate

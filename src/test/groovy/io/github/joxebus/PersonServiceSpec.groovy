@@ -1,8 +1,9 @@
-package com.nearsoft
+package io.github.joxebus
 
-import com.nearsoft.repository.PersonRepository
-import com.nearsoft.entity.Person
-import com.nearsoft.service.PersonService
+
+import io.github.joxebus.entity.Person
+import io.github.joxebus.service.PersonService
+import io.github.joxebus.repository.PersonRepository
 import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll

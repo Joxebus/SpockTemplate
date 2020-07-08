@@ -1,6 +1,6 @@
-package com.nearsoft.repository;
+package io.github.joxebus.repository;
 
-import com.nearsoft.entity.Person;
+import io.github.joxebus.entity.Person;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

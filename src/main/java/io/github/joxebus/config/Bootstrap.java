@@ -1,7 +1,7 @@
-package com.nearsoft.config;
+package io.github.joxebus.config;
 
-import com.nearsoft.entity.Person;
-import com.nearsoft.service.PersonService;
+import io.github.joxebus.entity.Person;
+import io.github.joxebus.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import java.io.IOException;
 @Component
 public class Bootstrap {
 
-    Logger logger = LoggerFactory.getLogger(Bootstrap.class);
+    private Logger logger = LoggerFactory.getLogger(Bootstrap.class);
 
     @Value("${local.server.address:http://localhost}")
     private String address;
@@ -27,8 +27,11 @@ public class Bootstrap {
     @Value("${spring.h2.console.path:/h2}")
     private String h2Path;
 
-    @Autowired
-    private PersonService personService;
+    private final PersonService personService;
+
+    public Bootstrap(PersonService personService) {
+        this.personService = personService;
+    }
 
     @EventListener(ApplicationReadyEvent.class)
     public void init(){

@@ -1,8 +1,8 @@
-package com.nearsoft.service;
+package io.github.joxebus.service;
 
-import com.nearsoft.entity.Person;
-import com.nearsoft.repository.PersonRepository;
-import com.nearsoft.utils.PersonValidator;
+import io.github.joxebus.entity.Person;
+import io.github.joxebus.repository.PersonRepository;
+import io.github.joxebus.utils.PersonValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +15,11 @@ public class PersonService {
 
     private static final Logger logger = LoggerFactory.getLogger(PersonService.class);
 
-    @Autowired
-    private PersonRepository personRepository;
+    private final PersonRepository personRepository;
+
+    public PersonService(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
 
     public Person create(Person newPerson) {
         PersonValidator.validate(newPerson);

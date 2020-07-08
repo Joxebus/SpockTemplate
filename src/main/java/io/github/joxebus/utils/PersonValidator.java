@@ -1,6 +1,6 @@
-package com.nearsoft.utils;
+package io.github.joxebus.utils;
 
-import com.nearsoft.entity.Person;
+import io.github.joxebus.entity.Person;
 
 import java.util.regex.Pattern;
 
