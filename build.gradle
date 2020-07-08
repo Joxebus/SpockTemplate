@@ -15,3 +15,17 @@ dependencies {
     compile 'org.codehaus.groovy:groovy-all:3.0.0'
     testCompile 'org.spockframework:spock-core:2.0-M3-groovy-3.0'
 }
+
+sourceSets {
+    main {
+        java { srcDirs = [] }    // no source dirs for the java compiler
+        groovy { srcDirs = ["src/main/java", "src/main/groovy"] }  // compile   everything in src/ with groovy
+    }
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
