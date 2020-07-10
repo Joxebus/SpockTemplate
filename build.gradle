@@ -1,9 +1,38 @@
 group 'io.github.joxebus'
 version '1.0-SNAPSHOT'
 
+buildscript {
+
+    // set custom variables
+    ext {
+        groovyVersion = '3.0.3'
+        spockVersion = '2.0-M3-groovy-3.0'
+        gradleBuildScanVersion = '2.0.2'
+    }
+
+    // check for dependencies in Maven Central when resolving the
+    // dependencies in the buildscript block
+    repositories {
+        mavenCentral()
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    // we need the spring boot plugin to run the build script
+    dependencies {
+        classpath "com.gradle:build-scan-plugin:${gradleBuildScanVersion}"
+    }
+}
+
 apply plugin: 'groovy'
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'com.gradle.build-scan'
+
+buildScan {
+    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+    termsOfServiceAgree = 'yes'
+}
 
 sourceCompatibility = 1.8
 
@@ -12,20 +41,6 @@ repositories {
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:3.0.0'
-    testCompile 'org.spockframework:spock-core:2.0-M3-groovy-3.0'
-}
-
-sourceSets {
-    main {
-        java { srcDirs = [] }    // no source dirs for the java compiler
-        groovy { srcDirs = ["src/main/java", "src/main/groovy"] }  // compile   everything in src/ with groovy
-    }
-}
-
-test {
-    useJUnitPlatform()
-    testLogging {
-        events "passed", "skipped", "failed"
-    }
+    compile "org.codehaus.groovy:groovy-all:${groovyVersion}"
+    testCompile "org.spockframework:spock-core:${spockVersion}"
 }
