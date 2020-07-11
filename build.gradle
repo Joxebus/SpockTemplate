@@ -1,8 +1,41 @@
 group 'io.github.joxebus'
 version '1.0-SNAPSHOT'
 
+buildscript {
+
+    // set custom variables
+    ext {
+        groovyVersion = '3.0.3'
+        spockVersion = '2.0-M3-groovy-3.0'
+        springBootVersion = '2.3.1.RELEASE'
+        gradleBuildScanVersion = '2.0.2'
+    }
+
+    // check for dependencies in Maven Central when resolving the
+    // dependencies in the buildscript block
+    repositories {
+        mavenCentral()
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    // we need the spring boot plugin to run the build script
+    dependencies {
+        classpath "com.gradle:build-scan-plugin:${gradleBuildScanVersion}"
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
 apply plugin: 'groovy'
+apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'com.gradle.build-scan'
+
+buildScan {
+    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+    termsOfServiceAgree = 'yes'
+}
 
 sourceCompatibility = 1.8
 
@@ -11,9 +44,10 @@ repositories {
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:3.0.0'
-    testCompile 'org.spockframework:spock-core:2.0-M3-groovy-3.0'
-    testCompile 'org.spockframework:spock-spring:2.0-M3-groovy-3.0'
+
+    compile "org.codehaus.groovy:groovy-all:${groovyVersion}"
+    testCompile "org.spockframework:spock-core:${spockVersion}"
+    testCompile "org.spockframework:spock-spring:${spockVersion}"
 
     testRuntime 'cglib:cglib-nodep:3.2.4'       // For mocking classes
     testCompile 'org.objenesis:objenesis:1.2'   // For mocking final classes
@@ -22,18 +56,18 @@ dependencies {
     compile "org.glassfish:javax.json:1.1.2"
 
     // Spring Dependencies
-    compile "org.springframework.boot:spring-boot-starter-web:2.3.1.RELEASE"
-    compile "org.springframework.boot:spring-boot-starter-data-jpa:2.3.1.RELEASE"
-    testCompile "org.springframework.boot:spring-boot-starter-test:2.3.1.RELEASE"
+    compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+    testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
 
     // DataBase
-    compile "com.h2database:h2:1.4.200"
+    compile "com.h2database:h2:1.4.197"
 }
 
 sourceSets {
     main {
-        java { srcDirs = [] }    // no source dirs for the java compiler
-        groovy { srcDirs = ["src/main/java", "src/main/groovy"] }  // compile   everything in src/ with groovy
+        java { srcDirs = ["src/main/java"] }    // no source dirs for the java compiler
+        groovy { srcDirs = ["src/main/groovy"] }  // compile   everything in src/ with groovy
     }
 }
 

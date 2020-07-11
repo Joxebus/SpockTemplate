@@ -8,6 +8,10 @@ import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
 
+/**
+ * With this test you will be able to practice the
+ * use of Mocks
+ */
 class PersonServiceSpec extends Specification {
 
     PersonService personService
