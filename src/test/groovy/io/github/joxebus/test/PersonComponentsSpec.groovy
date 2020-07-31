@@ -66,10 +66,10 @@ class PersonComponentsSpec extends Specification {
         personService = new PersonServiceImpl()
         personController = new PersonController(personService: personService)
 
-        when:
+        when: "controller recieves data to create a person with the wrong format phone"
         Person person = personController.create(name, phone, age)
 
-        then:
+        then: "the service throws a RuntimeException"
         thrown RuntimeException
 
         where: "Information provided as data pipes"
