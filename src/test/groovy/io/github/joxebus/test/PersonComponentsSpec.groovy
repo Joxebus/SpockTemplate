@@ -7,7 +7,7 @@ import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
 
-class ExampleSpec extends Specification {
+class PersonComponentsSpec extends Specification {
 
     @Shared
     private PersonService personService
