@@ -7,7 +7,7 @@ class PersonController {
 
     PersonService personService
 
-    Person create(String name, String phone){
-        personService.create(name, phone)
+    Person create(String name, String phone, int age){
+        personService.create(name, phone, age)
     }
 }
