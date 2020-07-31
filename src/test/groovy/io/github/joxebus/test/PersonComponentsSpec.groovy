@@ -3,6 +3,7 @@ package io.github.joxebus.test
 import io.github.joxebus.beans.Person
 import io.github.joxebus.controller.PersonController
 import io.github.joxebus.service.PersonService
+import io.github.joxebus.service.PersonServiceImpl
 import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
@@ -62,7 +63,7 @@ class PersonComponentsSpec extends Specification {
     @Unroll("Testing exception is thrown with phone #phone")
     def "Test exception with different data"(){
         given:
-        personService = new PersonService()
+        personService = new PersonServiceImpl()
         personController = new PersonController(personService: personService)
 
         when:
