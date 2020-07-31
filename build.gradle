@@ -43,6 +43,9 @@ repositories {
 dependencies {
     compile "org.codehaus.groovy:groovy-all:${groovyVersion}"
     testCompile "org.spockframework:spock-core:${spockVersion}"
+
+    testRuntime 'cglib:cglib-nodep:3.2.4'       // For mocking classes
+    testCompile 'org.objenesis:objenesis:1.2'   // For mocking final classes
 }
 
 sourceSets {
