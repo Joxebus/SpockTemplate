@@ -12,23 +12,23 @@ class BankAccountSpec extends Specification {
         BankAccountService service = new BankAccountService()
 
         when: "When the service receive the account and 100"
-        service.deposit(bankAccount, 100 as BigDecimal)
+        service.deposit(bankAccount, 100.0)
 
         then: "The balance should be 100"
-        service.balance(bankAccount) == 100
+        service.balance(bankAccount) == 100.0
 
     }
 
     def "An account should decrement money on withdraw"(){
         given: "An account with 100 and an accountService"
-        BankAccount bankAccount = new BankAccount(amount: 100)
+        BankAccount bankAccount = new BankAccount(amount: 100.0)
         BankAccountService service = new BankAccountService()
 
         when: "When the service withdraw from the account 50"
-        service.withdraw(bankAccount, 50 as BigDecimal)
+        service.withdraw(bankAccount, 50.0)
 
         then: "The balance should be 50"
-        service.balance(bankAccount) == 50
+        service.balance(bankAccount) == 50.0
     }
 
     def "AccountService cannot withdraw a quantity higher than the money in the account"(){
