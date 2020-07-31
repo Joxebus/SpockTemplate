@@ -46,12 +46,12 @@ class BankAccountSpec extends Specification {
 
     }
 
-    def "AccountService should call method getAmount"(){
-        given: "An account and an accountService"
+    def "AccountService should call method getAmount on an account Mock"(){
+        given: "An account mock"
 
-        when: "When the service receive the account and 100"
+        when: "When the service call balance on account"
 
-        then: "The service should call getAmount on account"
+        then: "The service should call getAmount on account 1 time"
 
     }
 
