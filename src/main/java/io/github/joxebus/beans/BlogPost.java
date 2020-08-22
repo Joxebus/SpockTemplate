@@ -2,7 +2,7 @@ package io.github.joxebus.beans;
 
 import java.util.Date;
 
-public class Book {
+public class BlogPost {
 
     private String title;
     private String author;
@@ -49,7 +49,7 @@ public class Book {
         if (o == null || getClass() != o.getClass())
             return false;
 
-        Book book = (Book) o;
+        BlogPost book = (BlogPost) o;
 
         if (title != null ? !title.equals(book.title) : book.title != null)
             return false;
@@ -71,7 +71,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
+        return "BlogPost{" +
                 "title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", pubDate=" + pubDate +
