@@ -11,9 +11,7 @@ class FeedReaderSpec extends Specification {
     String bookFeedUrl = "https://www.bookbrowse.com/rss/book_news.rss"
     String blogFeedUrl = "https://groovylopeando.wordpress.com/?feed=rss2"
 
-    @Shared
     FeedService<Book> bookFeedService;
-    @Shared
     FeedService<Feed> blogFeedService;
 
     def "FeedReaderGroovy with bookFeedService and can get 10 book records"() {
