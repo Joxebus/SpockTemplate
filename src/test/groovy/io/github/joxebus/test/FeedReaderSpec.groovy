@@ -34,7 +34,7 @@ class FeedReaderSpec extends Specification {
     def "FeedReaderGroovy with blogPostFeedService and can get 10 book records"() {
         given: "a FeedReaderGroovy with blogPostFeedService"
 
-        when: "feedReader read the bookFeedUrl"
+        when: "feedReader read the blogFeedUrl"
 
         then: "the number of records returned are 10"
 
