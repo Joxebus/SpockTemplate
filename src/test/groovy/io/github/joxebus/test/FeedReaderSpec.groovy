@@ -3,7 +3,6 @@ package io.github.joxebus.test
 import io.github.joxebus.beans.Book
 import io.github.joxebus.beans.Feed
 import io.github.joxebus.service.FeedService
-import spock.lang.Shared
 import spock.lang.Specification
 
 class FeedReaderSpec extends Specification {

@@ -1,14 +1,9 @@
 package io.github.joxebus.test
 
-import io.github.joxebus.beans.BlogPost
+
 import io.github.joxebus.beans.Book
 import io.github.joxebus.beans.Feed
-import io.github.joxebus.service.BlogPostFeedService
-import io.github.joxebus.service.BookFeedService
 import io.github.joxebus.service.FeedService
-import io.github.joxebus.utils.FeedReaderGroovy
-import io.github.joxebus.utils.FeedReaderJava
-import spock.lang.Shared
 import spock.lang.Specification
 
 class FeedReaderInteractionSpec extends Specification {
