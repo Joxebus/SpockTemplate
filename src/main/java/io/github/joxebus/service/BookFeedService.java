@@ -28,7 +28,6 @@ public class BookFeedService implements FeedService<Book> {
     private static Book feedEntryToBook(FeedEntry entry) throws ParseException {
         Book book = new Book();
         book.setTitle(entry.getTitle());
-        book.setAuthor(entry.getAuthor());
         book.setLink(entry.getLink());
         book.setPubDate(pubDateFormatter.parse(entry.getPubDate()));
         return book;

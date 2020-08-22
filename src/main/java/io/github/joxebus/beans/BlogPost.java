@@ -1,14 +1,13 @@
 package io.github.joxebus.beans;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class BlogPost {
 
     private String title;
-    private String author;
     private Date pubDate;
     private String link;
-
 
     public String getTitle() {
         return title;
@@ -16,14 +15,6 @@ public class BlogPost {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public Date getPubDate() {
@@ -49,21 +40,18 @@ public class BlogPost {
         if (o == null || getClass() != o.getClass())
             return false;
 
-        BlogPost book = (BlogPost) o;
+        BlogPost other = (BlogPost) o;
 
-        if (title != null ? !title.equals(book.title) : book.title != null)
+        if (!Objects.equals(title, other.title))
             return false;
-        if (author != null ? !author.equals(book.author) : book.author != null)
+        if (!Objects.equals(pubDate, other.pubDate))
             return false;
-        if (pubDate != null ? !pubDate.equals(book.pubDate) : book.pubDate != null)
-            return false;
-        return link != null ? link.equals(book.link) : book.link == null;
+        return Objects.equals(link, other.link);
     }
 
     @Override
     public int hashCode() {
         int result = title != null ? title.hashCode() : 0;
-        result = 31 * result + (author != null ? author.hashCode() : 0);
         result = 31 * result + (pubDate != null ? pubDate.hashCode() : 0);
         result = 31 * result + (link != null ? link.hashCode() : 0);
         return result;
@@ -73,7 +61,6 @@ public class BlogPost {
     public String toString() {
         return "BlogPost{" +
                 "title='" + title + '\'' +
-                ", author='" + author + '\'' +
                 ", pubDate=" + pubDate +
                 ", link='" + link + '\'' +
                 '}';

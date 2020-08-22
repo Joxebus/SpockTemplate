@@ -8,10 +8,13 @@ import groovy.transform.ToString
 class Feed {
 
     String title;
-    String author;
     String link;
     String description;
     String pubDate;
 
     List<FeedEntry> entries = []
+
+    void addEntry(FeedEntry entry) {
+        entries << entry
+    }
 }

@@ -7,7 +7,6 @@ import groovy.transform.ToString
 @ToString(excludes = ['link', 'description'])
 class FeedEntry {
     String title;
-    String author;
     String link;
     String description;
     String pubDate;

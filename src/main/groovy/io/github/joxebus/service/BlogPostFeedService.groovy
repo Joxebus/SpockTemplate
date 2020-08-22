@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat
 
 class BlogPostFeedService implements FeedService<BlogPost> {
 
+    static DateFormat pubDateFormatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz")
+
     List<BlogPost> extractFromFeed(List<FeedEntry> entries){
         List<BlogPost> blogPostList = []
         entries.each { entry ->
@@ -25,9 +27,8 @@ class BlogPostFeedService implements FeedService<BlogPost> {
         BlogPost blogPost = new BlogPost()
         blogPost.with {
             title = entry.title
-            author = entry.author
             link = entry.link
-            pubDate = new Date().parse("EEE, dd MMM yyyy HH:mm:ss zzz", entry.pubDate)
+            pubDate = pubDateFormatter.parse(entry.pubDate)
         }
         blogPost
     }
