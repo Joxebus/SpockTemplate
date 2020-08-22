@@ -31,52 +31,100 @@ class PersonControllerRestSpec extends Specification {
 
     def "/people should return a list"(){
         when: "Get list"
+        def entity = restTemplate.getForEntity("/people/", List<Person>)
 
         then: "status code OK and values are the expected"
-
+        entity.statusCode    == HttpStatus.OK
+        entity.body instanceof List
     }
 
     def "/people should save via post"(){
         given: "A new person is created"
         Person person = new Person()
         // TODO setup values to Person
+        person.with {
+            name = "Julio"
+            lastName = "Chavez"
+            age = 32
+            phone = "153-897-2345"
+
+        }
 
         HttpHeaders requestHeaders = new HttpHeaders()
         requestHeaders.setContentType(MediaType.APPLICATION_JSON)
         HttpEntity<Person> data = new HttpEntity<>(person, requestHeaders)
 
         when: "The person is sent via POST"
+        def response = restTemplate.postForEntity("/people/", data, Person)
 
         then: "status code CREATED and values are the expected"
-
+        response.statusCode == HttpStatus.CREATED
+        response.body.id > 0
     }
 
 
     def "/people delete and get list"(){
         when: "Person is deleted"
+        Person person = restTemplate.getForEntity("/people/", List<Person>)?.body.last()
+        restTemplate.delete("/people/${person.id}")
 
         and: "Retrieve the list after delete the person"
+        def response = restTemplate.getForEntity("/people/", List<Person>)
 
         then: "status code OK and values are the expected"
+        response.statusCode == HttpStatus.OK
+        response.body instanceof List
 
     }
 
     def "/people update the first element"(){
         given: "Get the person with ID 1"
+        def entity = restTemplate.getForEntity("/people/1", Person)
 
         when: "Change the data and send it to update"
+        Person person  = entity.body
+        person.with {
+            name = "David"
+            lastName = "Copperfield"
+        }
+
+        HttpHeaders requestHeaders = new HttpHeaders()
+        requestHeaders.setContentType(MediaType.APPLICATION_JSON)
+        HttpEntity<Person> data = new HttpEntity<>(person, requestHeaders)
+
+        restTemplate.put("/people/", data, Person)
+
+        and:
+        def response = restTemplate.getForEntity("/people/1", Person)
 
         then: "status code OK and values are the expected"
+        response.statusCode == HttpStatus.OK
+        response.body.with {
+            name == "David"
+            lastName == "Copperfield"
+        }
 
     }
 
     def "/people save should throw 400"() {
         given: "A person is declared with invalid data"
+        Person personNotValid = new Person()
+        personNotValid.with {
+            name = "John"
+            lastName = "Doe"
+            age = 50
+            phone = "123-3453464"
+        }
 
         when: "Try to save via POST the person"
+        HttpHeaders requestHeaders = new HttpHeaders()
+        requestHeaders.setContentType(MediaType.APPLICATION_JSON)
+        HttpEntity<Person> data = new HttpEntity<>(personNotValid, requestHeaders)
+        def response = restTemplate.postForEntity("/people/", data, Person)
 
         then: "status code BAD_REQUEST and values are the expected"
 
+        response.statusCode == HttpStatus.BAD_REQUEST
         // where: ""
         // newName    |  newLastName   |   newAge  |   newPhone
     }
