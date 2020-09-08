@@ -1,4 +1,5 @@
 # SpockTemplate
+[![Build Status](https://travis-ci.com/Joxebus/SpockTemplate.svg?branch=example4-solution)](https://travis-ci.com/Joxebus/SpockTemplate)
 
 This repo contains templates to start to work with Spock Framework.
 
