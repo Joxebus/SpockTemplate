@@ -43,7 +43,7 @@ root
 ## Requirements
 
 - Java 8
-- Gradle 5.5
+- Gradle 7.3.3
 
 ## Run tests
 
