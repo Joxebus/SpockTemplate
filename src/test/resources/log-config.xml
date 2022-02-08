@@ -6,7 +6,7 @@
         </encoder>
     </appender>
     <logger name="org.springframework">
-        <level value="WARN" />
+        <level value="trace" />
     </logger>
     <logger name="org.hibernate">
         <level value="WARN" />
@@ -19,7 +19,7 @@
         <level value="debug" />
     </logger>
     <logger name="io.github.joxebus.test.config">
-        <level value="info" />
+        <level value="debug" />
     </logger>
 
     <root level="debug">
