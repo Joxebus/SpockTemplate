@@ -1,50 +1,33 @@
+plugins {
+    id("groovy")
+    id("java")
+    id("idea")
+}
 group 'io.github.joxebus'
 version '1.0-SNAPSHOT'
 
-buildscript {
-
-    // set custom variables
-    ext {
-        groovyVersion = '3.0.3'
-        spockVersion = '2.0-M3-groovy-3.0'
-        gradleBuildScanVersion = '2.0.2'
-    }
-
-    // check for dependencies in Maven Central when resolving the
-    // dependencies in the buildscript block
-    repositories {
-        mavenCentral()
-        maven {
-            url 'https://plugins.gradle.org/m2/'
-        }
-    }
-    // we need the spring boot plugin to run the build script
-    dependencies {
-        classpath "com.gradle:build-scan-plugin:${gradleBuildScanVersion}"
-    }
+java {
+    sourceCompatibility = JavaVersion.toVersion("1.8")
+    targetCompatibility = JavaVersion.toVersion("1.8")
 }
-
-apply plugin: 'groovy'
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'com.gradle.build-scan'
-
-buildScan {
-    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
-    termsOfServiceAgree = 'yes'
-}
-
-sourceCompatibility = 1.8
 
 repositories {
+    // Spock releases are available from Maven Central
     mavenCentral()
+    // Spock snapshots are available from the Sonatype OSS snapshot repository
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
 dependencies {
-    compile "org.codehaus.groovy:groovy-all:${groovyVersion}"
-    testCompile "org.spockframework:spock-core:${spockVersion}"
+    // mandatory dependencies for using Spock
+    implementation "org.codehaus.groovy:groovy:3.0.9"
+    testImplementation platform("org.spockframework:spock-bom:2.0-groovy-3.0")
+    testImplementation "org.spockframework:spock-core"
 
-    testCompile 'cglib:cglib-nodep:2.2'       // For mocking classes
+    // optional dependencies for using Spock
+    testImplementation "org.hamcrest:hamcrest-core:2.2"   // only necessary if Hamcrest matchers are used
+    testRuntimeOnly "net.bytebuddy:byte-buddy:1.11.0" // allows mocking of classes (in addition to interfaces)
+    testRuntimeOnly "org.objenesis:objenesis:3.2"      // allows mocking of classes without default constructor (together with ByteBuddy or CGLIB)
 }
 
 sourceSets {
