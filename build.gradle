@@ -1,67 +1,47 @@
+plugins {
+    id("groovy")
+    id("java")
+    id("idea")
+    id 'org.springframework.boot' version '2.6.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
 group 'io.github.joxebus'
 version '1.0-SNAPSHOT'
 
-buildscript {
-
-    // set custom variables
-    ext {
-        groovyVersion = '3.0.3'
-        spockVersion = '2.0-M3-groovy-3.0'
-        springBootVersion = '2.3.1.RELEASE'
-        gradleBuildScanVersion = '2.0.2'
-    }
-
-    // check for dependencies in Maven Central when resolving the
-    // dependencies in the buildscript block
-    repositories {
-        mavenCentral()
-        maven {
-            url 'https://plugins.gradle.org/m2/'
-        }
-    }
-    // we need the spring boot plugin to run the build script
-    dependencies {
-        classpath "com.gradle:build-scan-plugin:${gradleBuildScanVersion}"
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    }
+java {
+    sourceCompatibility = JavaVersion.toVersion("1.8")
+    targetCompatibility = JavaVersion.toVersion("1.8")
 }
-
-apply plugin: 'groovy'
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'com.gradle.build-scan'
-
-buildScan {
-    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
-    termsOfServiceAgree = 'yes'
-}
-
-sourceCompatibility = 1.8
 
 repositories {
+    // Spock releases are available from Maven Central
     mavenCentral()
+    // Spock snapshots are available from the Sonatype OSS snapshot repository
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
 dependencies {
+    // mandatory dependencies for using Spock
+    implementation "org.codehaus.groovy:groovy:3.0.9"
+    testImplementation platform("org.spockframework:spock-bom:2.0-groovy-3.0")
+    testImplementation "org.spockframework:spock-core"
+    testImplementation "org.spockframework:spock-spring:2.1-M2-groovy-3.0"
 
-    compile "org.codehaus.groovy:groovy-all:${groovyVersion}"
-    testCompile "org.spockframework:spock-core:${spockVersion}"
-    testCompile "org.spockframework:spock-spring:${spockVersion}"
-
-    testRuntime 'cglib:cglib-nodep:3.2.4'       // For mocking classes
-    testCompile 'org.objenesis:objenesis:1.2'   // For mocking final classes
+    // optional dependencies for using Spock
+    testImplementation "org.hamcrest:hamcrest-core:2.2"   // only necessary if Hamcrest matchers are used
+    testRuntimeOnly "net.bytebuddy:byte-buddy:1.11.0" // allows mocking of classes (in addition to interfaces)
+    testRuntimeOnly "org.objenesis:objenesis:3.2"      // allows mocking of classes without default constructor (together with ByteBuddy or CGLIB)
 
     // Json External API
-    compile "org.glassfish:javax.json:1.1.2"
+    implementation "org.glassfish:javax.json:1.1.2"
 
     // Spring Dependencies
-    compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
-    compile "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
-    testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
 
     // DataBase
-    compile "com.h2database:h2:1.4.197"
+    implementation "com.h2database:h2:1.4.197"
 }
 
 sourceSets {
