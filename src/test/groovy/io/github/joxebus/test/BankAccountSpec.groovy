@@ -50,16 +50,40 @@ class BankAccountSpec extends Specification {
 
     }
 
+    def "AccountService can withdraw a quantity lower than the money in the account"(){
+        given: "An account with 200 and an accountService"
+        BankAccount bankAccount = new BankAccount(amount: 200.0)
+
+        when: "When the service withdraw from the account 100"
+        service.withdraw(bankAccount, 100.0)
+
+        then: "The service should not throw a BankAccountException"
+        notThrown BankAccountException
+
+    }
+
     def "AccountService should call method getAmount on an account Mock"(){
         given: "An account mock"
         BankAccount bankAccount = Mock()
-        BankAccountService bankAccountService = new BankAccountService()
 
         when: "When the service call balance on account"
-        bankAccountService.balance(bankAccount)
+        service.balance(bankAccount)
 
         then: "The service should call getAmount on account 1 time"
         1 * bankAccount.getAmount()
+
+    }
+
+    def "AccountService should return an amount on an account Stub"(){
+        given: "An account Stub"
+        BankAccount bankAccount = Stub()
+        bankAccount.getAmount() >> 100.0
+
+        when: "When the service call balance on account"
+        BigDecimal amount = service.balance(bankAccount)
+
+        then: "The service should call getAmount on account 1 time"
+        amount == 100.0
 
     }
 
