@@ -1,6 +1,7 @@
 package io.github.joxebus.test
 
 import io.github.joxebus.beans.BankAccount
+import io.github.joxebus.exceptions.BankAccountException
 import io.github.joxebus.services.BankAccountService
 import spock.lang.Shared
 import spock.lang.Specification
@@ -46,8 +47,26 @@ class BankAccountSpec extends Specification {
 
     }
 
+    def "AccountService can withdraw a quantity lower than the money in the account"(){
+        given: "An account with 200 and an accountService"
+
+        when: "When the service withdraw from the account 100"
+
+        then: "The service should not throw a BankAccountException"
+
+    }
+
     def "AccountService should call method getAmount on an account Mock"(){
         given: "An account mock"
+
+        when: "When the service call balance on account"
+
+        then: "The service should call getAmount on account 1 time"
+
+    }
+
+    def "AccountService should return an amount on an account Stub"(){
+        given: "An account Stub"
 
         when: "When the service call balance on account"
 
