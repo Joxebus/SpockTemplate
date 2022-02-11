@@ -3,7 +3,6 @@ package io.github.joxebus
 import io.github.joxebus.controller.PersonController
 import io.github.joxebus.entity.Person
 import io.github.joxebus.service.PersonService
-import spock.lang.Shared
 import spock.lang.Specification
 
 /**
@@ -16,17 +15,11 @@ class PersonControllerSpec extends Specification {
     PersonController personController
     PersonService personService
 
-    @Shared Person person
+    Person person
 
     def setup(){
-        // first initialize a person
+        // first create a person object
         person = new Person()
-        person.with {
-            name = "Omar"
-            lastName = "Bautista"
-            age = 32
-            phone = "653-352=9084"
-        }
         // then create a Mock of the service
         personService = Mock()
         // finally inject the service into the controller
@@ -57,15 +50,6 @@ class PersonControllerSpec extends Specification {
     }
 
     def "Test PersonService update method is called"(){
-        given: "A person with an existing ID and different values"
-        person.with {
-            id = 1
-            name = "Jorge"
-            lastName = "Valenzuela"
-            age = 32
-            phone = "653-352=9084"
-        }
-
         when: "Controller receives a PUT operation for this person"
         personController.update(person)
 
@@ -75,7 +59,7 @@ class PersonControllerSpec extends Specification {
 
     def "Test PersonService delete method is called"(){
         when: "Person is created via POST"
-        Person personCreated = personController.create(person)
+        personController.create(person)
 
         and: "The person returned is sent to the DELETE operation"
         personController.delete(person.id)

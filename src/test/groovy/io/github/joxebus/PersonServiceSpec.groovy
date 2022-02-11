@@ -3,7 +3,6 @@ package io.github.joxebus
 import io.github.joxebus.entity.Person
 import io.github.joxebus.service.PersonService
 import io.github.joxebus.repository.PersonRepository
-import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -16,7 +15,6 @@ class PersonServiceSpec extends Specification {
     PersonService personService
     PersonRepository personRepository
 
-    @Shared
     Person person
 
     def setup(){
@@ -70,7 +68,7 @@ class PersonServiceSpec extends Specification {
     }
 
     def "Find a person by id"(){
-        given: "a stubed respository and a service instance"
+        given: "a stubbed repository and a service instance"
         personRepository = Stub()
         personService = new PersonService(personRepository)
 
@@ -98,12 +96,11 @@ class PersonServiceSpec extends Specification {
     }
 
     def "Delete person throw exception"(){
-        when: "when delete a unexisting person"
+        when: "when delete a no-existing person"
         personService.delete(100)
 
         then: "a RuntimeException is thrown"
         thrown(RuntimeException)
-
     }
 
 }

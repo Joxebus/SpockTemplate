@@ -64,12 +64,15 @@ class PersonControllerRestSpec extends Specification {
 
 
     def "/people delete and get list"(){
-        when: "Person is deleted"
-        Person person = restTemplate.getForEntity("/people/", List<Person>)?.body.last()
+        when: "Get all the people from /people/ url"
+        def response = restTemplate.getForEntity("/people/", List<Person>)
+
+        and: "Last person is deleted"
+        Person person = response.body.last()
         restTemplate.delete("/people/${person.id}")
 
         and: "Retrieve the list after delete the person"
-        def response = restTemplate.getForEntity("/people/", List<Person>)
+        response = restTemplate.getForEntity("/people/", List<Person>)
 
         then: "status code OK and values are the expected"
         response.statusCode == HttpStatus.OK

@@ -15,7 +15,7 @@ class BootstrapSpec extends Specification {
         bootstrap = new Bootstrap(personService)
     }
 
-    def "Test init method"(){
+    def "Test interactions between Bootstrap and PersonService"(){
         when: "init() method is called"
         bootstrap.init()
 
