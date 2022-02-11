@@ -3,7 +3,7 @@ package io.github.joxebus.beans
 import groovy.transform.Canonical
 
 /**
- * This class use a validtation with regex for telephone number
+ * This class use a validation with regex for telephone number
  */
 @Canonical
 class Person {
