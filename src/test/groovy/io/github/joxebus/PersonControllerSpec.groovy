@@ -3,7 +3,6 @@ package io.github.joxebus
 import io.github.joxebus.controller.PersonController
 import io.github.joxebus.entity.Person
 import io.github.joxebus.service.PersonService
-import spock.lang.Shared
 import spock.lang.Specification
 
 /**
@@ -16,10 +15,10 @@ class PersonControllerSpec extends Specification {
     PersonController personController
     PersonService personService
 
-    @Shared Person person
+    Person person
 
     def setup(){
-        // first initialize a person
+        // first create a person object
         // then create a Mock of the service
         // finally inject the service into the controller
     }

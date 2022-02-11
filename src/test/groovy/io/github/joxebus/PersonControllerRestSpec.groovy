@@ -53,7 +53,9 @@ class PersonControllerRestSpec extends Specification {
 
 
     def "/people delete and get list"(){
-        when: "Person is deleted"
+        when: "Get all the people from /people/ url"
+
+        and: "Last person is deleted"
 
         and: "Retrieve the list after delete the person"
 

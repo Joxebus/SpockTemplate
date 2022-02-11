@@ -14,7 +14,7 @@ class BootstrapSpec extends Specification {
         // TODO Mock personService and setup into Bootstrap
     }
 
-    def "Test init method"(){
+    def "Test interactions between Bootstrap and PersonService"(){
         when: "init() method is called"
 
         then: "the method find all should be call 1 time"
