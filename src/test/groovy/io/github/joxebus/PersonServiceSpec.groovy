@@ -29,7 +29,6 @@ class PersonServiceSpec extends Specification {
         then: "repository save method should be called once"
     }
 
-    @Unroll("Testing invalid values name=#newName, lastName=#newLastName, age=#newAge, phone=#newPhone")
     def "Person with invalid phone throw IllegalArgumentException"(){
         given: "a person with some values"
 
@@ -38,6 +37,11 @@ class PersonServiceSpec extends Specification {
         then: "an IllegalArgumentException is thrown"
 
         where: "defined values to test"
+        name        |   lastName    |   age  |   phone
+        "Omar"      |   "Bautista"  |   32   |   "234765-2345"
+        "Diana"     |   "Ramirez"   |   31   |   "432-8716-345"
+        "Alberto"   |   "Rubalcaba" |   28   |   "763-7654523"
+        "Daniela"   |   "Perez"     |   26   |   "7643451834"
 
     }
 
