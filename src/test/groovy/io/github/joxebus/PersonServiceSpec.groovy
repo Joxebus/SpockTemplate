@@ -40,7 +40,6 @@ class PersonServiceSpec extends Specification {
         1 * personRepository.save(person)
     }
 
-    @Unroll("Testing invalid values name=#name, lastName=#lastName, age=#age, phone=#phone")
     def "Person with invalid phone throw IllegalArgumentException"(){
         given: "a person with some values"
         Person anotherPerson = new Person()
