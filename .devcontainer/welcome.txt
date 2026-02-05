@@ -1,0 +1,30 @@
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║        🚀 Spock Template Development Environment 🚀            ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+📦 Environment Details:
+   • Java Version: OpenJDK 8
+   • Gradle: 7.3.3 (via wrapper)
+   • Groovy: 4.0.16
+   • Spock Framework: 2.3-groovy-4.0
+
+🔧 Available Commands:
+   • ./gradlew test          - Run all Spock tests
+   • ./gradlew build         - Build the project
+   • ./gradlew clean         - Clean build artifacts
+   • ./gradlew tasks         - List all available tasks
+
+📚 Quick Start:
+   1. Tests are located in: src/test/groovy/
+   2. Add your code in: src/main/groovy/ or src/main/java/
+   3. Run tests with: ./gradlew test
+
+💡 Tips:
+   • Spock tests use Groovy syntax with BDD-style specifications
+   • Check ExampleSpec.groovy for a sample test
+   • Use 'given-when-then' blocks for clear test structure
+   • Always use ./gradlew (wrapper) instead of gradle command
+
+Happy Testing! 🎉
