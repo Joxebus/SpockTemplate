@@ -9,3 +9,8 @@ out/*
 .idea/
 .iml/
 
+# DevContainer - keep configuration, ignore local data
+.devcontainer/.gradle/
+.devcontainer/.vscode-server/
+.devcontainer/.vscode-server-insiders/
+
