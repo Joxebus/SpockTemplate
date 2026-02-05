@@ -1,0 +1,44 @@
+{
+  "name": "Spock Template Development Environment",
+  "image": "mcr.microsoft.com/devcontainers/java:1-8",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "java.home": "/usr/local/sdkman/candidates/java/current",
+        "java.configuration.runtimes": [
+          {
+            "name": "JavaSE-1.8",
+            "path": "/usr/local/sdkman/candidates/java/current"
+          }
+        ],
+        "gradle.nestedProjects": true,
+        "groovy.classpath": [
+          "/workspaces/SpockTemplate/build/libs"
+        ]
+      },
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-gradle",
+        "marlon407.code-groovy",
+        "redhat.java",
+        "vscjava.vscode-java-debug",
+        "vscjava.vscode-java-test",
+        "vscjava.vscode-maven",
+        "ms-azuretools.vscode-docker",
+        "ritwickdey.liveserver"
+      ]
+    }
+  },
+  "postCreateCommand": "chmod +x gradlew && ./gradlew --version && echo '\n✅ Environment ready! Run ./gradlew test to execute Spock tests.'",
+  "postStartCommand": "echo 'Welcome to Spock Template Development Environment!'",
+  "postAttachCommand": "cat .devcontainer/welcome.txt",
+  "remoteEnv": {
+    "JAVA_HOME": "/usr/local/sdkman/candidates/java/current"
+  },
+  "remoteUser": "vscode",
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4gb",
+    "storage": "32gb"
+  }
+}
