@@ -5,8 +5,8 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 📦 Environment Details:
-   • Java Version: OpenJDK 8
-   • Gradle: 7.3.3 (via wrapper)
+   • Java Version: OpenJDK 21
+   • Gradle: 8.5 (via wrapper)
    • Groovy: 4.0.16
    • Spock Framework: 2.3-groovy-4.0
 
