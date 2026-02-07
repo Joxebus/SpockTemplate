@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes the GitHub Codespaces and Dev Container configuration for the Spock Template project. The configuration ensures a consistent development environment with Java 8 and Gradle 7.3.3 pre-installed.
+This document describes the GitHub Codespaces and Dev Container configuration for the Spock Template project. The configuration ensures a consistent development environment with Java 21 and Gradle 8.5 pre-installed.
 
 ## Files Structure
 
@@ -29,11 +29,11 @@ This section provides a detailed explanation of each field in the `devcontainer.
 
 #### `image`
 ```json
-"image": "mcr.microsoft.com/devcontainers/java:1-8"
+"image": "mcr.microsoft.com/devcontainers/java:1-21"
 ```
 **Purpose**: Specifies the base Docker image  
 **Type**: String (Docker image reference)  
-**Description**: Uses Microsoft's official Java 8 dev container image. The format is `{registry}/{repository}:{tag}` where `1-8` means version 1 of the image with Java 8.  
+**Description**: Uses Microsoft's official Java 21 dev container image. The format is `{registry}/{repository}:{tag}` where `1-21` means version 1 of the image with Java 21.  
 **Alternatives**: You could use `dockerfile` instead to build a custom image.
 
 ### Customizations
@@ -50,26 +50,7 @@ This section provides a detailed explanation of each field in the `devcontainer.
 **Type**: Object  
 **Description**: These settings override or supplement the user's VS Code settings when working in the container.
 
-##### `java.home`
-```json
-"java.home": "/usr/local/sdkman/candidates/java/current"
-```
-**Purpose**: Tells VS Code where Java is installed  
-**Type**: String (file path)  
-**Description**: Points to the Java installation directory used by the Java extension.
 
-##### `java.configuration.runtimes`
-```json
-"java.configuration.runtimes": [
-  {
-    "name": "JavaSE-1.8",
-    "path": "/usr/local/sdkman/candidates/java/current"
-  }
-]
-```
-**Purpose**: Configures available Java runtimes for the project  
-**Type**: Array of objects  
-**Description**: Specifies Java 8 (JavaSE-1.8) as the runtime environment. This ensures the project compiles and runs with Java 8.
 
 ##### `gradle.nestedProjects`
 ```json
@@ -136,19 +117,6 @@ This section provides a detailed explanation of each field in the `devcontainer.
 **When**: Runs when the editor connects to the container  
 **Description**: Displays the contents of the welcome file. This is useful for showing helpful information when a developer opens the project.
 
-### Environment Configuration
-
-#### `remoteEnv`
-```json
-"remoteEnv": {
-  "JAVA_HOME": "/usr/local/sdkman/candidates/java/current"
-}
-```
-**Purpose**: Set environment variables in the container  
-**Type**: Object (key-value pairs)  
-**Description**: These environment variables are available to all processes in the container.
-
-- **JAVA_HOME**: Standard environment variable pointing to Java installation. Gradle will use its default location (`~/.gradle`) for caching, which is automatically managed by the container.
 
 #### `remoteUser`
 ```json
@@ -211,17 +179,17 @@ This section provides a detailed explanation of each field in the `devcontainer.
 
 ### Base Image
 
-**Image**: `mcr.microsoft.com/devcontainers/java:1-8`
+**Image**: `mcr.microsoft.com/devcontainers/java:1-21`
 
-This is Microsoft's official Java 8 Dev Container image (version 1, Java 8), which includes:
-- OpenJDK 8
+This is Microsoft's official Java 21 Dev Container image (version 1, Java 21), which includes:
+- OpenJDK 21
 - Common development tools (git, curl, wget, etc.)
 - Node.js (for tooling)
 - Pre-configured non-root user (`vscode`)
 
 ### Build Tools
 
-**Gradle**: This project uses the Gradle wrapper (`./gradlew`) which is already included in the repository at version 7.3.3. No global Gradle installation is needed.
+**Gradle**: This project uses the Gradle wrapper (`./gradlew`) which is already included in the repository at version 8.5. No global Gradle installation is needed.
 
 **Git**: Already included in the base Java image, so no additional feature is required.
 
@@ -239,20 +207,11 @@ The following extensions are automatically installed:
 | `vscjava.vscode-java-test` | Test runner for JUnit/Spock |
 | `vscjava.vscode-maven` | Maven support (optional, for compatibility) |
 | `ms-azuretools.vscode-docker` | Docker support |
+| `ritwickdey.liveserver` | Live Server for static files |
 
 ### VS Code Settings
 
 Custom settings applied in the container:
-
-```json
-"java.home": "/usr/local/sdkman/candidates/java/current"
-```
-- Points to Java 8 installation
-
-```json
-"java.configuration.runtimes": [...]
-```
-- Configures Java runtime for the project
 
 ```json
 "gradle.nestedProjects": true
@@ -291,12 +250,10 @@ cat .devcontainer/welcome.txt
 ```json
 "remoteEnv": {
   "GRADLE_USER_HOME": "/workspace/.gradle",
-  "JAVA_HOME": "/usr/local/sdkman/candidates/java/current"
 }
 ```
 
 - `GRADLE_USER_HOME`: Keeps Gradle cache in workspace for faster rebuilds
-- `JAVA_HOME`: Points to Java 8 installation
 
 ### Resource Requirements
 
@@ -310,7 +267,7 @@ cat .devcontainer/welcome.txt
 
 **Minimum requirements for GitHub Codespaces:**
 - **CPUs**: 2 cores (sufficient for Gradle builds)
-- **Memory**: 4GB (recommended for Java 8 + Gradle)
+- **Memory**: 4GB (recommended for Java 21 + Gradle)
 - **Storage**: 32GB (adequate for dependencies and build artifacts)
 
 These are the default minimums; users can choose larger machines if needed.
@@ -341,8 +298,8 @@ These are the default minimums; users can choose larger machines if needed.
 ### First-Time Setup
 
 The container will automatically:
-1. Pull the Java 8 base image
-2. Install Gradle 7.3.3
+1. Pull the Java 21 base image
+2. Install Gradle 8.5
 3. Install Git and GitHub CLI
 4. Install all VS Code extensions
 5. Make gradlew executable
@@ -400,7 +357,7 @@ Update the Gradle feature version:
 
 ```json
 "ghcr.io/devcontainers/features/gradle:1": {
-  "version": "8.0"
+  "version": "8.5"
 }
 ```
 
@@ -478,7 +435,7 @@ java -version
 - [Dev Containers Specification](https://containers.dev/)
 - [GitHub Codespaces Documentation](https://docs.github.com/en/codespaces)
 - [Spock Framework](https://spockframework.org/)
-- [Gradle Documentation](https://docs.gradle.org/7.3.3/userguide/userguide.html)
+- [Gradle Documentation](https://docs.gradle.org/8.5/userguide/userguide.html)
 
 ## Maintenance
 
