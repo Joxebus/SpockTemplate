@@ -4,13 +4,6 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "java.home": "/usr/local/sdkman/candidates/java/current",
-        "java.configuration.runtimes": [
-          {
-            "name": "JavaSE-21",
-            "path": "/usr/local/sdkman/candidates/java/current"
-          }
-        ],
         "gradle.nestedProjects": true,
         "groovy.classpath": [
           "/workspaces/SpockTemplate/build/libs"
@@ -32,13 +25,10 @@
   "postCreateCommand": "chmod +x gradlew && ./gradlew --version && echo '\n✅ Environment ready! Run ./gradlew test to execute Spock tests.'",
   "postStartCommand": "echo 'Welcome to Spock Template Development Environment!'",
   "postAttachCommand": "cat .devcontainer/welcome.txt",
-  "remoteEnv": {
-    "JAVA_HOME": "/usr/local/sdkman/candidates/java/current"
-  },
   "remoteUser": "vscode",
   "hostRequirements": {
     "cpus": 2,
     "memory": "4gb",
-    "storage": "32gb"
+    "storage": "16gb"
   }
 }
