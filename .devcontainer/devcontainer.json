@@ -1,13 +1,13 @@
 {
   "name": "Spock Template Development Environment",
-  "image": "mcr.microsoft.com/devcontainers/java:1-8",
+  "image": "mcr.microsoft.com/devcontainers/java:1-21",
   "customizations": {
     "vscode": {
       "settings": {
         "java.home": "/usr/local/sdkman/candidates/java/current",
         "java.configuration.runtimes": [
           {
-            "name": "JavaSE-1.8",
+            "name": "JavaSE-21",
             "path": "/usr/local/sdkman/candidates/java/current"
           }
         ],
