@@ -2,15 +2,15 @@ plugins {
     id("groovy")
     id("java")
     id("idea")
-    id 'org.springframework.boot' version '2.6.3'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.springframework.boot' version '3.2.3'
+    id 'io.spring.dependency-management' version '1.1.4'
 }
 group 'io.github.joxebus'
 version '1.0-SNAPSHOT'
 
 java {
-    sourceCompatibility = JavaVersion.toVersion("1.8")
-    targetCompatibility = JavaVersion.toVersion("1.8")
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 repositories {
@@ -23,14 +23,12 @@ repositories {
 dependencies {
     // mandatory dependencies for using Spock
     implementation "org.apache.groovy:groovy-all:4.0.16"
-    testImplementation platform("org.spockframework:spock-bom:2.3-groovy-4.0")
+    testImplementation platform("org.spockframework:spock-bom:2.4-M4-groovy-4.0")
     testImplementation "org.spockframework:spock-core"
-    testImplementation "org.spockframework:spock-spring:2.3-groovy-4.0"
+    testImplementation "org.spockframework:spock-spring"
 
     // optional dependencies for using Spock
     testImplementation "org.hamcrest:hamcrest-core:2.2"   // only necessary if Hamcrest matchers are used
-    testRuntimeOnly "net.bytebuddy:byte-buddy:1.11.0" // allows mocking of classes (in addition to interfaces)
-    testRuntimeOnly "org.objenesis:objenesis:3.2"      // allows mocking of classes without default constructor (together with ByteBuddy or CGLIB)
 
     // Json External API
     implementation "org.glassfish:javax.json:1.1.2"
@@ -41,7 +39,7 @@ dependencies {
     testImplementation "org.springframework.boot:spring-boot-starter-test"
 
     // DataBase
-    implementation "com.h2database:h2:1.4.197"
+    implementation 'com.h2database:h2:2.2.220'
 }
 
 sourceSets {
